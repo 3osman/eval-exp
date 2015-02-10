@@ -1,9 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package evalspeedmotion;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -12,25 +20,30 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class ArcToDemo extends Application {
-
+/**
+ *
+ * @author bojana
+ */
+public class EvalSpeedMotion extends Application {
+    
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        // create root node
-        Group root = new Group();
-        Scene scene = new Scene(root, 640, 400);
-        primaryStage.setScene(scene);
-
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        
         // translate root node to center of the screen
-        root.setTranslateX(320);
-        root.setTranslateY(200);
+        //root.setTranslateX(320);
+        //root.setTranslateY(200);
 
         // create scene
-        createScene(root);
-
-        primaryStage.show();
+        //createScene(root);
+        
+        stage.show();
     }
-
+    
     private void createScene(Group root) {
         Pane branch = new StackPane();
         root.getChildren().add(branch);
@@ -57,10 +70,11 @@ public class ArcToDemo extends Application {
 
     }
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        Experiment e = new Experiment(5,3,0);
-        System.out.println("e done");               
         launch(args);
-        
     }
+    
 }

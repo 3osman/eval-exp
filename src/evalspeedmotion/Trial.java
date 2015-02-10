@@ -1,3 +1,5 @@
+package evalspeedmotion;
+
 public class Trial {
     protected int block;
     protected int trial;
