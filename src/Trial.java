@@ -6,14 +6,22 @@ public class Trial {
     
     protected Experiment experiment;
     
+    private int number;
+    private int visual;
+    private int size;
+    
     /**
      * Visual is the type of visual variable being tested in this trial. 
      * Size is the size of the grid.
      * 
+     * @param number Trial number
      * @param visual O is direction, 1 is speed, 2 is both
      * @param size 4, 9, 16 or 25
      */
-    public Trial(int visual, int size) { 
+    public Trial(int number, int visual, int size) { 
+        this.number = number;
+        this.visual = visual;
+        this.size = size;
     }
 
     public void displayInstructions() {
@@ -31,5 +39,10 @@ public class Trial {
     }
    
     public void stop() { 
+    }
+    
+    @Override
+    public String toString() {
+        return "Trial: #" + number + " of type " + visual + " of size " + size + "";
     }
 }

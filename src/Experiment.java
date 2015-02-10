@@ -17,30 +17,62 @@ public class Experiment {
     protected ArrayList<Trial> allTrials = new ArrayList<Trial>();
     protected int currentTrial = 0;
     
-    private String participant;
+    private int participant;
+    private int block;
+    private int trial;
     
-    public Experiment(String participant, int block, int trial, File designFile) {
+    public Experiment(int participant, int block, int trial) {
         this.participant = participant;
+        this.block = block;
+        this.trial = trial;
         // …
         loadTrials();
-        initLog();
-        nextTrial();
+        //initLog();
+        //nextTrial();
     }
+    
     public void loadTrials() {
         allTrials.clear();
         // read the design file and keep only the trials to run
         try {
-            BufferedReader br = new BufferedReader(new FileReader(designFile));
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("resources/speedmotion.csv").getFile());                        
+            BufferedReader br = new BufferedReader(new FileReader(file));
             String line = br.readLine();
             // ...
-            
+            System.out.println(line);
             while(line != null) {
                 String[] parts = line.split(",");
-                // ...
-                // allTrials.add(new Trial(...));
+                
+                if(!parts[0].equals("Participant")) {
+                    if(Integer.parseInt(parts[0]) == participant) {
+                        if(Integer.parseInt(parts[2]) == block) {
+                            int trialNumber = Integer.parseInt(parts[3]);
+                            int visual;
+                            switch(parts[4]) {
+                                case "W1":
+                                    visual = 0;
+                                    break;
+                                case "W2":
+                                    visual = 1;
+                                    break;
+                                case "W1W2":
+                                    visual = 2;
+                                    break;
+                                default:
+                                    continue;
+                            }
+                            
+                            int size = Integer.parseInt(parts[5]);
+                            
+                            allTrials.add(new Trial(trialNumber, visual, size));
+                        }
+                    }
+                }
+
                 line = br.readLine();
             }
-            
+            System.out.println(allTrials.toString());
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -60,7 +92,7 @@ public class Experiment {
     public void log(Trial trial) {}
     
     public void stop() {
-    // display a "thank you" message
+        // display a "thank you" message
     }
     public void nextTrial() {
         if(currentTrial >= allTrials.size()) {

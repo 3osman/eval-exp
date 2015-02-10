@@ -1,4 +1,5 @@
 
+import java.io.File;
 import javafx.animation.PathTransition;
 import javafx.animation.PathTransition.OrientationType;
 import javafx.animation.PathTransitionBuilder;
@@ -16,21 +17,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Osman
- */
 public class ArcToDemo extends Application {
 
     private PathTransition pathTransitionEllipse;
     private PathTransition pathTransitionCircle;
 
     private void init(Stage primaryStage) {
+        
         Group root = new Group();
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 600, 460));
@@ -56,7 +49,6 @@ public class ArcToDemo extends Application {
 
 
         // Cirle path example
-
         Rectangle rect2 = new Rectangle(0, 0, 20, 20);
         rect2.setArcHeight(10);
         rect2.setArcWidth(10);
@@ -106,6 +98,9 @@ public class ArcToDemo extends Application {
     }
 
     public static void main(String[] args) {
+        Experiment e = new Experiment(5,3,0);
+        System.out.println("e done");               
         launch(args);
+        
     }
 }
