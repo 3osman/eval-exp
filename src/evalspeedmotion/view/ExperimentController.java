@@ -5,6 +5,7 @@
  */
 package evalspeedmotion.view;
 
+import evalspeedmotion.Experiment;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
@@ -26,6 +27,7 @@ public class ExperimentController {
     
     @FXML
     private Text participant;
+    private Experiment experiment;
     
     /**
      * Initializes the controller class.
@@ -44,7 +46,8 @@ public class ExperimentController {
         rot.playFromStart();
     }    
     
-    public void setParticipant(String num) {
-        participant.setText(num);
+    public void setExperiment(Experiment ex) {
+        this.experiment = ex;
+        participant.setText(experiment.getParticipant());
     }
 }

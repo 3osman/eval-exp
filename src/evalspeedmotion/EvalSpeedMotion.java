@@ -73,7 +73,7 @@ public class EvalSpeedMotion extends Application {
             primaryStage.setScene(scene);
 
             ExperimentController controller = loader.getController();
-            controller.setParticipant(participant);
+            controller.setExperiment(new Experiment(participant, 1, 0));
 
             primaryStage.show();
         } catch (IOException e) {

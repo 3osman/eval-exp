@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,11 +21,11 @@ public class Experiment {
     protected ArrayList<Trial> allTrials = new ArrayList<Trial>();
     protected int currentTrial = 0;
     
-    private int participant;
+    private String participant;
     private int block;
     private int trial;
     
-    public Experiment(int participant, int block, int trial) {
+    public Experiment(String participant, int block, int trial) {
         this.participant = participant;
         this.block = block;
         this.trial = trial;
@@ -37,17 +39,16 @@ public class Experiment {
         allTrials.clear();
         // read the design file and keep only the trials to run
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("resources/speedmotion.csv").getFile());                        
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            InputStream is = getClass().getClassLoader().getResourceAsStream("resources/speedmotion.csv");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             String line = br.readLine();
-            // ...
+
             System.out.println(line);
             while(line != null) {
                 String[] parts = line.split(",");
                 
                 if(!parts[0].equals("Participant")) {
-                    if(Integer.parseInt(parts[0]) == participant) {
+                    if(Integer.parseInt(parts[0]) == Integer.parseInt(participant)) {
                         if(Integer.parseInt(parts[2]) == block) {
                             int trialNumber = Integer.parseInt(parts[3]);
                             int visual;
@@ -120,5 +121,17 @@ public class Experiment {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String getParticipant() {
+        return participant;
+    }
+    
+    public int getBlock() {
+        return block;
+    }
+    
+    public int getTrial() {
+        return trial;
     }
 }
