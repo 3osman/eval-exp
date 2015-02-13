@@ -123,6 +123,7 @@ public class EvalSpeedMotion extends Application {
             TrialExperimentController controller = loader.getController();
             controller.setExperiment(experiment);
             controller.setMain(this);
+            controller.setTrialInstructions(experiment.getCurrentTrial().getInstructions());
             
             experimentLayout.setCenter(trial);
             

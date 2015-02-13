@@ -141,6 +141,10 @@ public class Experiment {
         return currentTrial;
     }
     
+    public Trial getCurrentTrial() {
+        return allTrials.get(currentTrial);
+    }
+    
     public ArrayList<Trial> getAllTrials() {
         return allTrials;
     }

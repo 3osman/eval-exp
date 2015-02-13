@@ -32,6 +32,9 @@ public class TrialExperimentController {
     private StackPane wheel;
     
     @FXML
+    private Text instructions;
+    
+    @FXML
     private Text participant, block, totalBlocks;
     @FXML
     private Text trial, totalTrials;
@@ -95,6 +98,10 @@ public class TrialExperimentController {
         if(trial != null) {
             trial.setText(String.valueOf(experiment.getTrial() + 1));
         }
+    }
+    
+    public void setTrialInstructions(String ins) {
+        instructions.setText(ins);
     }
     
     public void stopTrial(KeyEvent event) {

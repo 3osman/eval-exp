@@ -32,11 +32,11 @@ public class Trial {
     public String getInstructions() {
         switch(visual) {
             case 0:
-                return "Find the circle moving counterclockwise.";
+                return "when you find the circle moving counterclockwise.";
             case 1:
-                return "Fine the fastest circle.";
+                return "when you find the fastest circle.";
             case 2:
-                return "Fine the fastest circle moving counterclockwise.";
+                return "when you find the fastest circle moving counterclockwise.";
         }
         
         return "";
