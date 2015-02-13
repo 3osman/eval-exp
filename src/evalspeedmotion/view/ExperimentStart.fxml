@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" focusTraversable="true" onKeyPressed="#startBlock" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.StartExperimentController">
+<VBox alignment="CENTER" focusTraversable="true" onKeyPressed="#startBlock" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.StartExperimentController">
    <children>
       <HBox alignment="CENTER" layoutX="281.0" layoutY="311.0">
          <children>

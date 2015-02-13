@@ -4,29 +4,17 @@ import evalspeedmotion.view.ExperimentController;
 import evalspeedmotion.view.RootLayoutController;
 import evalspeedmotion.view.StartExperimentController;
 import evalspeedmotion.view.TrialExperimentController;
+import evalspeedmotion.view.TimerExperimentController;
 import java.io.IOException;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.stage.Modality;
+
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Duration;
 
 public class EvalSpeedMotion extends Application {
     
@@ -73,7 +61,7 @@ public class EvalSpeedMotion extends Application {
     }
     
     /**
-     * Displays the experiment.
+     * Displays the experiment start page.
      * 
      * @param participant 
      */
@@ -108,7 +96,7 @@ public class EvalSpeedMotion extends Application {
         }
     }
     
-    public void startTrial(String participant) {
+    public void startTrial() {
         try {
             // Load the fxml file 
             FXMLLoader loader = new FXMLLoader();
@@ -126,7 +114,25 @@ public class EvalSpeedMotion extends Application {
             e.printStackTrace();
         }
     }
+    
+    public void startTimerToNextTrial() {
+        try {
+            // Load the fxml file 
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(EvalSpeedMotion.class.getResource("view/ExperimentTimer.fxml"));
+            AnchorPane timer = (AnchorPane) loader.load();
 
+            TimerExperimentController controller = loader.getController();
+            controller.setMain(this);
+            
+            experimentLayout.setCenter(timer);
+            
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

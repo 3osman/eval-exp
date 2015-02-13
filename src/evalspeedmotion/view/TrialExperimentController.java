@@ -32,11 +32,9 @@ public class TrialExperimentController {
     private StackPane wheel;
     
     @FXML
-    private Text participant;
+    private Text participant, block, totalBlocks;
     @FXML
-    private Text block;
-    @FXML
-    private Text totalBlocks;
+    private Text trial, totalTrials;
     
     private Timeline timeline;
     @FXML
@@ -91,12 +89,19 @@ public class TrialExperimentController {
         if(participant != null) {
             participant.setText(experiment.getParticipant());
         }
+        if(totalTrials != null) {
+            totalTrials.setText(String.valueOf(Experiment.TRIALS + 1));
+        }
+        if(trial != null) {
+            trial.setText(String.valueOf(experiment.getTrial() + 1));
+        }
     }
     
     public void stopTrial(KeyEvent event) {
         if (event.getCode().equals(KeyCode.SPACE)) {
             System.out.print("space pressed");
             timeline.stop();
+            mainApp.startTimerToNextTrial();
         }
     }
     

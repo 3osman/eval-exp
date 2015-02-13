@@ -45,7 +45,7 @@ public class StartExperimentController {
     @FXML
     public void startBlock(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
-            mainApp.startTrial(experiment.getParticipant());
+            mainApp.startTrial();
         }
     }
 }

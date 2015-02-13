@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane style="-fx-background-color: DF9694;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.TimerExperimentController">
+    <stylesheets>
+        <URL value="@bootstrap.css" />
+    </stylesheets>
+   <children>
+      <VBox alignment="CENTER" layoutX="-0.5039999485015869" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="BOTTOM_CENTER">
+               <children>
+                  <Label fx:id="timerLabel" alignment="CENTER" style="-fx-text-fill: WHITE; -fx-font-size: 72;" styleClass="h1" text="Timer" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="seconds" textOrigin="BOTTOM">
+                     <HBox.margin>
+                        <Insets bottom="25.0" left="20.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="until next trial starts automatically">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</AnchorPane>
