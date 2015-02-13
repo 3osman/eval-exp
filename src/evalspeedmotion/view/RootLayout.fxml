@@ -12,11 +12,21 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.RootLayoutController">
     <children>
-      <VBox alignment="TOP_CENTER" layoutX="288.0" layoutY="273.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+      <VBox alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: white;" styleClass="h1" text="Motion &amp; Speed Experiment" textAlignment="CENTER" wrappingWidth="531.6829261779785">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: white;" styleClass="h4" text="by Mohamed Soliman &amp; Bojana Dumeljic" textAlignment="CENTER" wrappingWidth="531.6829261779785">
+               <VBox.margin>
+                  <Insets bottom="70.0" />
+               </VBox.margin>
+            </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: white;" styleClass="h2" text="Select a paricipant and click 'Start'" textAlignment="CENTER" wrappingWidth="531.6829261779785">
                <VBox.margin>
-                  <Insets bottom="50.0" />
+                  <Insets bottom="30.0" />
                </VBox.margin>
             </Text>
             <ComboBox fx:id="participant" onAction="#handleComboBoxAction" prefWidth="150.0" promptText="Participant">
@@ -24,7 +34,10 @@
                   <Insets bottom="30.0" />
                </VBox.margin>
             </ComboBox>
-              <Button fx:id="button" disable="true" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="92.0" styleClass="btn-danger" text="Start" />
+              <Button fx:id="button" disable="true" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="92.0" styleClass="btn-danger" text="Start">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin></Button>
          </children>
       </VBox>
     </children>
