@@ -2,6 +2,8 @@ package evalspeedmotion;
 
 import evalspeedmotion.view.ExperimentController;
 import evalspeedmotion.view.RootLayoutController;
+import evalspeedmotion.view.StartExperimentController;
+import evalspeedmotion.view.TrialExperimentController;
 import java.io.IOException;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -32,6 +34,8 @@ public class EvalSpeedMotion extends Application {
     private AnchorPane rootLayout;
     
     private BorderPane experimentLayout;
+    
+    private Experiment experiment;
     
     public EvalSpeedMotion() {
         
@@ -83,16 +87,17 @@ public class EvalSpeedMotion extends Application {
             Scene scene = new Scene(experimentLayout);
             primaryStage.setScene(scene);
 
+            experiment = new Experiment(participant, 1, 0);
             ExperimentController controller = loader.getController();
-            controller.setExperiment(new Experiment(participant, 1, 0));
+            controller.setExperiment(experiment);
             controller.setMain(this);
             
             FXMLLoader loaderStart = new FXMLLoader();
             loaderStart.setLocation(EvalSpeedMotion.class.getResource("view/ExperimentStart.fxml"));
             VBox startEx = (VBox) loaderStart.load();
             
-            ExperimentController controllerS = loaderStart.getController();
-            controllerS.setExperiment(new Experiment(participant, 1, 0));
+            StartExperimentController controllerS = loaderStart.getController();
+            controllerS.setExperiment(experiment);
             controllerS.setMain(this);
             
             experimentLayout.setCenter(startEx);
@@ -103,17 +108,18 @@ public class EvalSpeedMotion extends Application {
         }
     }
     
-    public void startExperiment(String participant) {
+    public void startTrial(String participant) {
         try {
             // Load the fxml file 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(EvalSpeedMotion.class.getResource("view/ExperimentTrial.fxml"));
             AnchorPane trial = (AnchorPane) loader.load();
-            experimentLayout.setCenter(trial);
 
-            ExperimentController controller = loader.getController();
-            controller.setExperiment(new Experiment(participant, 1, 0));
+            TrialExperimentController controller = loader.getController();
+            controller.setExperiment(experiment);
             controller.setMain(this);
+            
+            experimentLayout.setCenter(trial);
             
             primaryStage.show();
         } catch (IOException e) {
