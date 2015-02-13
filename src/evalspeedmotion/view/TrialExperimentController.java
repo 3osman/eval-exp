@@ -99,14 +99,12 @@ public class TrialExperimentController {
     
     public void stopTrial(KeyEvent event) {
         if (event.getCode().equals(KeyCode.SPACE)) {
-            System.out.print("space pressed");
             timeline.stop();
-            mainApp.startTimerToNextTrial();
+            mainApp.finishTrial();
         }
     }
     
     public void setMain(EvalSpeedMotion main) {
-        System.out.println(main);
         this.mainApp = main;
     }
 }

@@ -29,21 +29,17 @@ public class Trial {
         this.size = size;
     }
 
-    public void displayInstructions() {
-        // ...
-    }
-    
-    public void hideInstructions() {
-        //experiment.getCanvas().removeShapes(experiment.getInstructions());
-    }
-    
-    public void start() {
-        // ...
-        // install the graphical listener and the user input listener
-        // call experiment.trialCompleted(); when appropriate
-    }
-   
-    public void stop() { 
+    public String getInstructions() {
+        switch(visual) {
+            case 0:
+                return "Find the circle moving counterclockwise.";
+            case 1:
+                return "Fine the fastest circle.";
+            case 2:
+                return "Fine the fastest circle moving counterclockwise.";
+        }
+        
+        return "";
     }
     
     @Override

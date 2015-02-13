@@ -32,15 +32,13 @@ public class RootLayoutController {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+        System.out.println("Starting Experiment!");
         main.showExperiment(participantSelected);
     }
     
     @FXML
     private void handleComboBoxAction(ActionEvent event) {  
-        System.out.println(participant.getValue());
         participantSelected = participant.getValue().toString();
-        System.out.println(participantSelected);
 
         button.setDisable(false);
     }

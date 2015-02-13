@@ -44,27 +44,10 @@ public class TimerExperimentController {
                     new KeyFrame(Duration.seconds(time.toSeconds() + 1),
                     new KeyValue(timeSeconds, 0)));
             timeline.playFromStart();
-            /*timeline = new Timeline(
-                new KeyFrame(Duration.seconds(1),
-                new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent t) {
-                        time.subtract(Duration.seconds(1));
-                        timeSeconds.set(time.toSeconds());
-                        //if (time.toSeconds() <= 0) {
-                       //     timeline.stop();
-                        //}
-                    }
-                })
-            );
-            
-            timeline.setCycleCount(Timeline.INDEFINITE);
-            timeline.play();*/
             
             timeline.setOnFinished(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent t) {
-                        System.out.print("DONE TIMER");
                         mainApp.startTrial();
                     }
                 });
@@ -72,7 +55,6 @@ public class TimerExperimentController {
     }    
     
     public void setMain(EvalSpeedMotion main) {
-        System.out.println(main);
         this.mainApp = main;
     }
     

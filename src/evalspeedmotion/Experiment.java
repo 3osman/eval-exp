@@ -24,7 +24,6 @@ public class Experiment {
     
     private String participant;
     private int block;
-    private int trial;
     
     public final static int BLOCKS = 4;
     public final static int TRIALS = 11;
@@ -32,11 +31,10 @@ public class Experiment {
     public Experiment(String participant, int block, int trial) {
         this.participant = participant;
         this.block = block;
-        this.trial = trial;
+        this.currentTrial = trial;
         // …
         loadTrials();
         initLog();
-        //nextTrial();
     }
     
     public void loadTrials() {
@@ -87,40 +85,30 @@ public class Experiment {
             e.printStackTrace();
         }
     }
+     
+    public void log(Trial trial) {
+        String trialToPrint = this.block + "\t"
+                + trial.trial + "\t"
+                + trial.visual + "\t"
+                + trial.size + "\t"
+                + trial.duration + "\t"
+                + trial.hit + "\n";
+        pwLog.print(trialToPrint);
+        pwLog.flush();
+    }
     
     public void trialCompleted() {
         Trial trial = allTrials.get(currentTrial);
-        trial.stop();
         log(trial);
         currentTrial++;
-        nextTrial();
     }
     
-    public void log(Trial trial) {
-        try {
-                pwLog = new PrintWriter(logFile);
-                String trialToPrint = this.block + "\t"
-                    + trial.trial + "\t"
-                    + trial.visual + "\t"
-                    + trial.size + "\t"
-                    + trial.duration + "\t"
-                    + trial.hit + "\n";
-                pwLog.print(trialToPrint);
-                pwLog.flush();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-    }
-    
-    public void stop() {
-        // display a "thank you" message
-    }
-    public void nextTrial() {
-        if(currentTrial >= allTrials.size()) {
-            stop();
+    public void blockCompleted() {
+        currentTrial = 0;
+        block++;
+        if(block <= BLOCKS) {
+            loadTrials();
         }
-        Trial trial = allTrials.get(currentTrial);
-        trial.displayInstructions();
     }
     
     public void initLog() {
@@ -150,7 +138,7 @@ public class Experiment {
     }
     
     public int getTrial() {
-        return trial;
+        return currentTrial;
     }
     
     public ArrayList<Trial> getAllTrials() {

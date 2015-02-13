@@ -28,7 +28,6 @@ public class StartExperimentController {
     }
     
     public void setMain(EvalSpeedMotion main) {
-        System.out.println(main);
         this.mainApp = main;
     }
     
