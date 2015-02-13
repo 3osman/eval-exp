@@ -1,27 +1,30 @@
 package evalspeedmotion;
 
+import java.sql.Time;
+
 public class Trial {
     protected int block;
     protected int trial;
-    protected String targetChange;
-    protected int nonTargetsCount;
+    protected int visual;
+    protected int size;
+    
+    protected int hit;
+    protected Time duration;
     
     protected Experiment experiment;
-    
-    private int number;
-    private int visual;
-    private int size;
     
     /**
      * Visual is the type of visual variable being tested in this trial. 
      * Size is the size of the grid.
      * 
-     * @param number Trial number
+     * @param block The block number
+     * @param trial The trial number
      * @param visual O is direction, 1 is speed, 2 is both
      * @param size 4, 9, 16 or 25
      */
-    public Trial(int number, int visual, int size) { 
-        this.number = number;
+    public Trial(int block, int trial, int visual, int size) { 
+        this.block = block;
+        this.trial = trial;
         this.visual = visual;
         this.size = size;
     }
@@ -45,6 +48,6 @@ public class Trial {
     
     @Override
     public String toString() {
-        return "Trial: #" + number + " of type " + visual + " of size " + size + "";
+        return "Trial: #" + trial + " of type " + visual + " of size " + size + "";
     }
 }

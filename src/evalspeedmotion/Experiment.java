@@ -14,9 +14,10 @@ import java.util.Date;
 
 public class Experiment {
     // input file (design): "experiment.csv"
-    protected File designFile = null;
+    //protected File designFile = null;
     // output file: logs
     protected PrintWriter pwLog = null;
+    File logFile = null;
     
     protected ArrayList<Trial> allTrials = new ArrayList<Trial>();
     protected int currentTrial = 0;
@@ -25,13 +26,16 @@ public class Experiment {
     private int block;
     private int trial;
     
+    public final static int BLOCKS = 4;
+    public final static int TRIALS = 11;
+    
     public Experiment(String participant, int block, int trial) {
         this.participant = participant;
         this.block = block;
         this.trial = trial;
         // …
         loadTrials();
-        //initLog();
+        initLog();
         //nextTrial();
     }
     
@@ -68,7 +72,7 @@ public class Experiment {
                             
                             int size = Integer.parseInt(parts[5]);
                             
-                            allTrials.add(new Trial(trialNumber, visual, size));
+                            allTrials.add(new Trial(block, trialNumber, visual, size));
                         }
                     }
                 }
@@ -92,7 +96,21 @@ public class Experiment {
         nextTrial();
     }
     
-    public void log(Trial trial) {}
+    public void log(Trial trial) {
+        try {
+                pwLog = new PrintWriter(logFile);
+                String trialToPrint = this.block + "\t"
+                    + trial.trial + "\t"
+                    + trial.visual + "\t"
+                    + trial.size + "\t"
+                    + trial.duration + "\t"
+                    + trial.hit + "\n";
+                pwLog.print(trialToPrint);
+                pwLog.flush();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+    }
     
     public void stop() {
         // display a "thank you" message
@@ -107,13 +125,13 @@ public class Experiment {
     
     public void initLog() {
         String logFileName = "log_S" + participant + "_" + (new Date()).toString() + ".csv";
-        File logFile = new File(logFileName);
+        logFile = new File(logFileName);
         try {
             pwLog = new PrintWriter(logFile);
             String header = "Block\t"
                 +"Trial\t"
-                +"TargetChange\t"
-                +"NonTargetsCount\t"
+                +"A\t"
+                +"B\t"
                 +"Duration\t"
                 +"Hit\n";
             pwLog.print(header);
@@ -133,5 +151,9 @@ public class Experiment {
     
     public int getTrial() {
         return trial;
+    }
+    
+    public ArrayList<Trial> getAllTrials() {
+        return allTrials;
     }
 }
