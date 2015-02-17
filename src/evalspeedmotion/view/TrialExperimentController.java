@@ -17,9 +17,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
@@ -139,33 +141,47 @@ public class TrialExperimentController {
                 grid.setPrefColumns(2);
                 grid.setPrefRows(2);
                 System.out.println("In 4");
+                AnchorPane.setLeftAnchor(grid, 300.0);
+                AnchorPane.setRightAnchor(grid, 300.0);
+                AnchorPane.setBottomAnchor(grid, 60.0);
+
                 break;
             case 9:
                 System.out.println("in 9");
                 grid.setPrefColumns(3);
                 grid.setPrefRows(3);
+                AnchorPane.setLeftAnchor(grid, 200.0);
+                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setRightAnchor(grid, 200.0);
                 break;
             case 16:
                 System.out.println("in 16");
                 grid.setPrefColumns(4);
                 grid.setPrefRows(4);
+                AnchorPane.setLeftAnchor(grid, 140.0);
+                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setRightAnchor(grid, 140.0);
                 break;
             case 25:
                 System.out.println("in 25");
                 grid.setPrefColumns(5);
                 grid.setPrefRows(5);
+                AnchorPane.setLeftAnchor(grid, 80.0);
+                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setRightAnchor(grid, 80.0);
                 break;
 
         }
+
         Random generator = new Random();
         int rand = generator.nextInt(this.experiment.getCurrentTrial().getSize());
-        System.out.println(rand);
-        System.out.println(this.experiment.getCurrentTrial().getSize());
+        // System.out.println(rand);
+        // System.out.println(this.experiment.getCurrentTrial().getSize());
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
-            wheels.get(i).setPrefHeight(100);
-            wheels.get(i).setPrefWidth(100);
+            wheels.get(i).setPrefHeight(130);
+            wheels.get(i).setPrefWidth(130);
             Circle current = new Circle(10, Color.BLACK);
-            current.setTranslateY(30.0);
+            current.setTranslateY(20.0);
             current.setStrokeType(StrokeType.INSIDE);
             wheels.get(i).getChildren().add(current);
             grid.getChildren().add(wheels.get(i));
