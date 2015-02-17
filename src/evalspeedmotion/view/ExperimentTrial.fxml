@@ -9,14 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane focusTraversable="true" onKeyPressed="#stopTrial" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.TrialExperimentController">
+<AnchorPane focusTraversable="true" onKeyPressed="#stopTrial" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.TrialExperimentController">
    <children>
       <Label fx:id="timerLabel" alignment="CENTER" layoutX="10.0" layoutY="120.0" style="-fx-text-fill: WHITE;" styleClass="h4" text="Timer" />
-      <StackPane fx:id="wheel" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-         </children>
-      </StackPane>
       <Text fill="WHITE" layoutX="10.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Participant: " />
       <Text fx:id="participant" fill="WHITE" layoutX="125.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="#" />
       <HBox layoutX="10.0" layoutY="50.0">
@@ -44,6 +39,40 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
+      <TilePane alignment="CENTER" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <StackPane fx:id="wheel" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="wheel1" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="wheel2" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="wheel3" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="wheel4" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="wheel5" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
+               </children>
+            </StackPane>
+         </children>
+      </TilePane>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
