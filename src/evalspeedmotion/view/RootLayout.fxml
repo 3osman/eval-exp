@@ -10,9 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.RootLayoutController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.RootLayoutController">
     <children>
-      <VBox alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" layoutX="20.0" layoutY="212.0" prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-stroke: white;" styleClass="h1" text="Motion &amp; Speed Experiment" textAlignment="CENTER" wrappingWidth="531.6829261779785">
                <VBox.margin>

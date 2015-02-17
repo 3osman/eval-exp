@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane focusTraversable="true" onKeyPressed="#stopTrial" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.TrialExperimentController">
+<AnchorPane focusTraversable="true" onKeyPressed="#stopTrial" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: DF9694;" stylesheets="@bootstrap.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="evalspeedmotion.view.TrialExperimentController">
    <children>
       <Label fx:id="timerLabel" alignment="CENTER" layoutX="10.0" layoutY="120.0" style="-fx-text-fill: WHITE;" styleClass="h4" text="Timer" />
       <Text fill="WHITE" layoutX="10.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Participant: " />
@@ -39,38 +39,43 @@
             <Insets top="10.0" />
          </padding>
       </VBox>
-      <TilePane alignment="CENTER" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TilePane fx:id="grid" alignment="CENTER" prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <StackPane fx:id="wheel" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
-            <StackPane fx:id="wheel1" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel1" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
-            <StackPane fx:id="wheel2" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel2" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
-            <StackPane fx:id="wheel3" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel3" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
-            <StackPane fx:id="wheel4" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel4" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
-            <StackPane fx:id="wheel5" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-               </children>
+            <StackPane fx:id="wheel5" prefHeight="0.0" prefWidth="0.0">
+               
             </StackPane>
+            <StackPane fx:id="wheel6" prefHeight="0.0" prefWidth="0.0">
+               
+            </StackPane>
+            <StackPane fx:id="wheel7" prefHeight="0.0" prefWidth="0.0">
+               
+            </StackPane>
+            <StackPane fx:id="wheel8" prefHeight="0.0" prefWidth="0.0">
+               
+            </StackPane>
+            <StackPane fx:id="wheel9" prefHeight="0.0" prefWidth="0.0">
+               
+            </StackPane>
+            <StackPane fx:id="wheel10" prefHeight="0.0" prefWidth="0.0">
+               
+            </StackPane>
+            
+            
          </children>
       </TilePane>
    </children>

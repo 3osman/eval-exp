@@ -124,7 +124,7 @@ public class EvalSpeedMotion extends Application {
             controller.setExperiment(experiment);
             controller.setMain(this);
             controller.setTrialInstructions(experiment.getCurrentTrial().getInstructions());
-            
+            controller.setGrid();
             experimentLayout.setCenter(trial);
             
             primaryStage.show();
