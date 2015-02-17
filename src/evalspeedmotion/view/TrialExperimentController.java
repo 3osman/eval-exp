@@ -8,6 +8,7 @@ package evalspeedmotion.view;
 import evalspeedmotion.EvalSpeedMotion;
 import evalspeedmotion.Experiment;
 import java.util.ArrayList;
+import java.util.Random;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -37,7 +38,7 @@ public class TrialExperimentController {
     @FXML
     private Text instructions;
     @FXML
-    private StackPane wheel,wheel1, wheel2,wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10;
+    private StackPane wheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10, wheel11, wheel12, wheel13, wheel14, wheel15, wheel16, wheel17, wheel18, wheel19, wheel20, wheel21, wheel22, wheel23, wheel24;
 
     ArrayList<StackPane> wheels = new ArrayList<>();
 
@@ -80,45 +81,117 @@ public class TrialExperimentController {
     }
 
     public void setGrid() {
+        wheel = new StackPane();
+        wheel1 = new StackPane();
+        wheel2 = new StackPane();
+        wheel3 = new StackPane();
+        wheel4 = new StackPane();
+        wheel5 = new StackPane();
+        wheel6 = new StackPane();
+        wheel7 = new StackPane();
+        wheel8 = new StackPane();
+        wheel9 = new StackPane();
+        wheel10 = new StackPane();
+        wheel11 = new StackPane();
+        wheel12 = new StackPane();
+        wheel13 = new StackPane();
+        wheel14 = new StackPane();
+        wheel15 = new StackPane();
+        wheel16 = new StackPane();
+        wheel17 = new StackPane();
+        wheel18 = new StackPane();
+        wheel19 = new StackPane();
+        wheel20 = new StackPane();
+        wheel21 = new StackPane();
+        wheel22 = new StackPane();
+        wheel23 = new StackPane();
+        wheel24 = new StackPane();
+
         wheels.add(wheel);
         wheels.add(wheel1);
-
         wheels.add(wheel2);
-
         wheels.add(wheel3);
-
         wheels.add(wheel4);
-
         wheels.add(wheel5);
         wheels.add(wheel6);
-
         wheels.add(wheel7);
-
         wheels.add(wheel8);
         wheels.add(wheel9);
         wheels.add(wheel10);
+        wheels.add(wheel11);
+        wheels.add(wheel12);
+        wheels.add(wheel13);
+        wheels.add(wheel14);
+        wheels.add(wheel15);
+        wheels.add(wheel16);
+        wheels.add(wheel17);
+        wheels.add(wheel18);
+        wheels.add(wheel19);
+        wheels.add(wheel20);
+        wheels.add(wheel21);
+        wheels.add(wheel22);
+        wheels.add(wheel23);
+        wheels.add(wheel24);
 
         this.experiment.getCurrentTrial().getVisual();
+        switch (this.experiment.getCurrentTrial().getSize()) {
+            case 4:
+                grid.setPrefColumns(2);
+                grid.setPrefRows(2);
+                System.out.println("In 4");
+                break;
+            case 9:
+                System.out.println("in 9");
+                grid.setPrefColumns(3);
+                grid.setPrefRows(3);
+                break;
+            case 16:
+                System.out.println("in 16");
+                grid.setPrefColumns(4);
+                grid.setPrefRows(4);
+                break;
+            case 25:
+                System.out.println("in 25");
+                grid.setPrefColumns(5);
+                grid.setPrefRows(5);
+                break;
+
+        }
+        Random generator = new Random();
+        int rand = generator.nextInt(this.experiment.getCurrentTrial().getSize());
+        System.out.println(rand);
+        System.out.println(this.experiment.getCurrentTrial().getSize());
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
-            System.out.println(this.experiment.getCurrentTrial().getSize());
-            System.out.println(wheels.size());
-            wheels.get(i).setPrefHeight(200);
-            wheels.get(i).setPrefWidth(200);
+            wheels.get(i).setPrefHeight(100);
+            wheels.get(i).setPrefWidth(100);
             Circle current = new Circle(10, Color.BLACK);
-            current.setTranslateY(50.0);
+            current.setTranslateY(30.0);
             current.setStrokeType(StrokeType.INSIDE);
-            wheels.get(i).getChildren().add(new Circle(10, Color.BLACK));
-            // grid.getChildren().add(wheel);
+            wheels.get(i).getChildren().add(current);
+            grid.getChildren().add(wheels.get(i));
             Timeline rot = new Timeline();
             rot.setCycleCount(Timeline.INDEFINITE);
             rot.setRate(1);
+            int direction = 360;
+            int duration = 7;
+            if (i == rand && this.experiment.getCurrentTrial().getVisual() == 0) {
+                direction = -360;
+            } else if (i == rand && this.experiment.getCurrentTrial().getVisual() == 1) {
+                duration = 3;
+            } else if (i == rand && this.experiment.getCurrentTrial().getVisual() == 2) {
+                direction = -360;
+                duration = 3;
+            }
+
             rot.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(
                                     wheels.get(i).rotateProperty(), 0)),
-                    new KeyFrame(Duration.seconds(5), new KeyValue(wheels.get(i)
-                                    .rotateProperty(), -360)));
+                    new KeyFrame(Duration.seconds(duration), new KeyValue(wheels.get(i)
+                                    .rotateProperty(), direction)));
             rot.playFromStart();
+
         }
+
         /*Timeline rot = new Timeline();
          rot.setCycleCount(Timeline.INDEFINITE);
          rot.setRate(1);
@@ -129,7 +202,6 @@ public class TrialExperimentController {
          .rotateProperty(), -360)));
          rot.playFromStart();*/
         //<Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
-
     }
 
     public void setExperiment(Experiment ex) {

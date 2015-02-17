@@ -40,43 +40,7 @@
          </padding>
       </VBox>
       <TilePane fx:id="grid" alignment="CENTER" prefHeight="800.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <StackPane fx:id="wheel" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel1" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel2" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel3" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel4" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel5" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel6" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel7" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel8" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel9" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            <StackPane fx:id="wheel10" prefHeight="0.0" prefWidth="0.0">
-               
-            </StackPane>
-            
-            
-         </children>
+         
       </TilePane>
    </children>
    <padding>
