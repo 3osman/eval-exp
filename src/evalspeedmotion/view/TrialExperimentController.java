@@ -22,6 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
@@ -43,7 +44,7 @@ public class TrialExperimentController {
     @FXML
     private StackPane wheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10, wheel11, wheel12, wheel13, wheel14, wheel15, wheel16, wheel17, wheel18, wheel19, wheel20, wheel21, wheel22, wheel23, wheel24;
     ArrayList<StackPane> wheels = new ArrayList<>();
-
+    int differentItem;
     @FXML
     private TilePane grid;
     @FXML
@@ -173,7 +174,7 @@ public class TrialExperimentController {
         }
 
         Random generator = new Random();
-        int rand = generator.nextInt(this.experiment.getCurrentTrial().getSize());
+        differentItem = generator.nextInt(this.experiment.getCurrentTrial().getSize());
         // System.out.println(rand);
         // System.out.println(this.experiment.getCurrentTrial().getSize());
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
@@ -189,11 +190,11 @@ public class TrialExperimentController {
             rot.setRate(1);
             int direction = 360;
             int duration = 7;
-            if (i == rand && this.experiment.getCurrentTrial().getVisual() == 0) {
+            if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 0) {
                 direction = -360;
-            } else if (i == rand && this.experiment.getCurrentTrial().getVisual() == 1) {
+            } else if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 1) {
                 duration = 3;
-            } else if (i == rand && this.experiment.getCurrentTrial().getVisual() == 2) {
+            } else if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 2) {
                 direction = -360;
                 duration = 3;
             }
@@ -234,15 +235,23 @@ public class TrialExperimentController {
     }
 
     public void putPlaceholders() {
-        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("/xshape.gif")));
-        iv.setFitHeight(50);
-        iv.setFitWidth(50);
+
         grid.getChildren().clear();
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
             wheels.set(i, new StackPane());
             wheels.get(i).setPrefHeight(130);
             wheels.get(i).setPrefWidth(130);
-            wheels.get(i).getChildren().add(new ImageView(new Image(getClass().getResourceAsStream("/xshape.gif"), 50, 50, true, true)));
+            ImageView currentImage = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/xshape.gif"), 50, 50, true, true));
+            wheels.get(i).getChildren().add(currentImage);
+            wheels.get(i).setId(i + "");
+            final int id = i;
+            currentImage.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.println("clicked on " + id);
+                }
+            });
             grid.getChildren().add(wheels.get(i));
 
         }
@@ -252,7 +261,7 @@ public class TrialExperimentController {
         if (event.getCode().equals(KeyCode.SPACE)) {
             timeline.stop();
             putPlaceholders();
-            mainApp.finishTrial();
+            // mainApp.finishTrial();
         }
     }
 
