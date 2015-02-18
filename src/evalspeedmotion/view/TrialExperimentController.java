@@ -42,6 +42,8 @@ public class TrialExperimentController {
     @FXML
     private Text instructions;
     @FXML
+    private Text space;
+    @FXML
     private StackPane wheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10, wheel11, wheel12, wheel13, wheel14, wheel15, wheel16, wheel17, wheel18, wheel19, wheel20, wheel21, wheel22, wheel23, wheel24;
     ArrayList<StackPane> wheels = new ArrayList<>();
     int differentItem;
@@ -235,8 +237,14 @@ public class TrialExperimentController {
     }
 
     public void putPlaceholders() {
-
+        setTrialInstructions("Choose the different one");
+        space.setText("");
         grid.getChildren().clear();
+        //==================================
+        //Time
+        System.out.println(timerLabel.getText());
+        //==================================
+
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
             wheels.set(i, new StackPane());
             wheels.get(i).setPrefHeight(130);
@@ -249,7 +257,14 @@ public class TrialExperimentController {
 
                 @Override
                 public void handle(MouseEvent event) {
-                    System.out.println("clicked on " + id);
+
+                    boolean match = (id == differentItem) ? true : false;
+                    //===============================
+                    // hit or not
+                    System.out.println(match);
+                    //===============================
+
+                    mainApp.finishTrial();
                 }
             });
             grid.getChildren().add(wheels.get(i));
@@ -261,7 +276,7 @@ public class TrialExperimentController {
         if (event.getCode().equals(KeyCode.SPACE)) {
             timeline.stop();
             putPlaceholders();
-            // mainApp.finishTrial();
+
         }
     }
 
