@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,7 +35,7 @@ public class Experiment {
         this.currentTrial = trial;
         // …
         loadTrials();
-        //initLog();
+        initLog();
     }
     
     public void loadTrials() {
@@ -99,7 +100,7 @@ public class Experiment {
     
     public void trialCompleted() {
         Trial trial = allTrials.get(currentTrial);
-       // log(trial);
+        log(trial);
         currentTrial++;
     }
     
@@ -112,7 +113,9 @@ public class Experiment {
     }
     
     public void initLog() {
-        String logFileName = "log_S" + participant + "_" + (new Date()).toString() + ".csv";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+
+        String logFileName = "log_S" + participant + "_" + (dateFormat.format(new Date())).toString() + ".csv";
         logFile = new File(logFileName);
         try {
             pwLog = new PrintWriter(logFile);
