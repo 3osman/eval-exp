@@ -17,8 +17,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -41,7 +42,6 @@ public class TrialExperimentController {
     private Text instructions;
     @FXML
     private StackPane wheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10, wheel11, wheel12, wheel13, wheel14, wheel15, wheel16, wheel17, wheel18, wheel19, wheel20, wheel21, wheel22, wheel23, wheel24;
-
     ArrayList<StackPane> wheels = new ArrayList<>();
 
     @FXML
@@ -135,7 +135,6 @@ public class TrialExperimentController {
         wheels.add(wheel23);
         wheels.add(wheel24);
 
-        this.experiment.getCurrentTrial().getVisual();
         switch (this.experiment.getCurrentTrial().getSize()) {
             case 4:
                 grid.setPrefColumns(2);
@@ -208,16 +207,6 @@ public class TrialExperimentController {
 
         }
 
-        /*Timeline rot = new Timeline();
-         rot.setCycleCount(Timeline.INDEFINITE);
-         rot.setRate(1);
-         rot.getKeyFrames().addAll(
-         new KeyFrame(Duration.ZERO, new KeyValue(
-         wheel.rotateProperty(), 0)),
-         new KeyFrame(Duration.seconds(5), new KeyValue(wheel
-         .rotateProperty(), -360)));
-         rot.playFromStart();*/
-        //<Circle radius="10.0" stroke="BLACK" strokeType="INSIDE" translateY="50.0" />
     }
 
     public void setExperiment(Experiment ex) {
@@ -244,9 +233,25 @@ public class TrialExperimentController {
         instructions.setText(ins);
     }
 
+    public void putPlaceholders() {
+        ImageView iv = new ImageView(new Image(getClass().getResourceAsStream("/xshape.gif")));
+        iv.setFitHeight(50);
+        iv.setFitWidth(50);
+        grid.getChildren().clear();
+        for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
+            wheels.set(i, new StackPane());
+            wheels.get(i).setPrefHeight(130);
+            wheels.get(i).setPrefWidth(130);
+            wheels.get(i).getChildren().add(new ImageView(new Image(getClass().getResourceAsStream("/xshape.gif"), 50, 50, true, true)));
+            grid.getChildren().add(wheels.get(i));
+
+        }
+    }
+
     public void stopTrial(KeyEvent event) {
         if (event.getCode().equals(KeyCode.SPACE)) {
             timeline.stop();
+            putPlaceholders();
             mainApp.finishTrial();
         }
     }
