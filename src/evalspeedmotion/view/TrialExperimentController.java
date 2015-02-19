@@ -137,48 +137,35 @@ public class TrialExperimentController {
         wheels.add(wheel22);
         wheels.add(wheel23);
         wheels.add(wheel24);
+        grid.setPrefColumns((int) Math.sqrt(this.experiment.getCurrentTrial().getSize()));
+        grid.setPrefRows((int) Math.sqrt(this.experiment.getCurrentTrial().getSize()));
 
         switch (this.experiment.getCurrentTrial().getSize()) {
             case 4:
-                grid.setPrefColumns(2);
-                grid.setPrefRows(2);
-                System.out.println("In 4");
                 AnchorPane.setLeftAnchor(grid, 300.0);
                 AnchorPane.setRightAnchor(grid, 300.0);
                 AnchorPane.setBottomAnchor(grid, 60.0);
-
                 break;
             case 9:
-                System.out.println("in 9");
-                grid.setPrefColumns(3);
-                grid.setPrefRows(3);
                 AnchorPane.setLeftAnchor(grid, 200.0);
                 AnchorPane.setBottomAnchor(grid, 60.0);
                 AnchorPane.setRightAnchor(grid, 200.0);
                 break;
             case 16:
-                System.out.println("in 16");
-                grid.setPrefColumns(4);
-                grid.setPrefRows(4);
                 AnchorPane.setLeftAnchor(grid, 140.0);
                 AnchorPane.setBottomAnchor(grid, 60.0);
                 AnchorPane.setRightAnchor(grid, 140.0);
                 break;
             case 25:
-                System.out.println("in 25");
-                grid.setPrefColumns(5);
-                grid.setPrefRows(5);
                 AnchorPane.setLeftAnchor(grid, 80.0);
                 AnchorPane.setBottomAnchor(grid, 60.0);
                 AnchorPane.setRightAnchor(grid, 80.0);
                 break;
-
         }
 
         Random generator = new Random();
         differentItem = generator.nextInt(this.experiment.getCurrentTrial().getSize());
-        // System.out.println(rand);
-        // System.out.println(this.experiment.getCurrentTrial().getSize());
+
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
             wheels.get(i).setPrefHeight(130);
             wheels.get(i).setPrefWidth(130);
@@ -191,20 +178,28 @@ public class TrialExperimentController {
             rot.setCycleCount(Timeline.INDEFINITE);
             rot.setRate(1);
             int direction = 360;
-            int duration = 7;
-            if (i == differentItem) {
-                switch (this.experiment.getCurrentTrial().getVisual()) {
-                    case (0):
+            int duration = generator.nextInt(4) + 4;
+
+            switch (this.experiment.getCurrentTrial().getVisual()) {
+                case (0): //direction
+                    duration = 7;
+                    if (i == differentItem) {
                         direction = -360;
-                        break;
-                    case (1):
-                        duration = 3;
-                        break;
-                    case (2):
+                    }
+                    break;
+                case (1): //speed
+                    if (i == differentItem) {
+                        duration = 2;
+                    }
+                    break;
+                case (2): //both of them
+                    duration = generator.nextInt(4) + 2;
+                    if (i == differentItem) {
                         direction = -360;
-                        duration = 3;
-                        break;
-                }
+                        duration = 2;
+                    }
+                    break;
+
             }
             rot.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(
