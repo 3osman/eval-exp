@@ -35,7 +35,7 @@ public class Experiment {
         this.currentTrial = trial;
         // …
         loadTrials();
-        //initLog();
+        initLog();
     }
     
     public void loadTrials() {
@@ -100,7 +100,7 @@ public class Experiment {
     
     public void trialCompleted() {
         Trial trial = allTrials.get(currentTrial);
-        //log(trial);
+        log(trial);
         currentTrial++;
     }
     

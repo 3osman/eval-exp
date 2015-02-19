@@ -9,8 +9,8 @@ public class Trial {
     protected int visual;
     protected int size;
 
-    protected int hit;
-    protected Time duration;
+    protected boolean hit;
+    protected double duration;
 
     protected Experiment experiment;
 
@@ -59,19 +59,19 @@ public class Trial {
         this.trial = trial;
     }
 
-    public int getHit() {
+    public boolean getHit() {
         return hit;
     }
 
-    public void setHit(int hit) {
+    public void setHit(boolean hit) {
         this.hit = hit;
     }
 
-    public Time getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 

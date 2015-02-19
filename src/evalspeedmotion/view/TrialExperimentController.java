@@ -233,6 +233,9 @@ public class TrialExperimentController {
     public void setTrialInstructions(String ins) {
         instructions.setText(ins);
     }
+    public void setHit(boolean hit){
+        this.experiment.getCurrentTrial().setHit(hit);
+    }
 
     public void putPlaceholders() {
         setTrialInstructions("Choose the different one");
@@ -240,6 +243,7 @@ public class TrialExperimentController {
         grid.getChildren().clear();
         //==================================
         //Time
+        this.experiment.getCurrentTrial().setDuration(Double.parseDouble(timerLabel.getText()));
         System.out.println(timerLabel.getText());
         //==================================
 
@@ -249,17 +253,17 @@ public class TrialExperimentController {
             wheels.get(i).setPrefWidth(130);
             ImageView currentImage = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/xshape.gif"), 50, 50, true, true));
             wheels.get(i).getChildren().add(currentImage);
-            wheels.get(i).setId(i + "");
             final int id = i;
+           
             currentImage.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent event) {
 
-                    boolean match = (id == differentItem) ? true : false;
                     //===============================
                     // hit or not
-                    System.out.println(match);
+                    setHit((id == differentItem) ? true : false);
+                   
                     //===============================
 
                     mainApp.finishTrial();
