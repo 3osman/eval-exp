@@ -182,13 +182,13 @@ public class TrialExperimentController {
             Timeline rot = new Timeline();
             rot.setCycleCount(Timeline.INDEFINITE);
             rot.setRate(1);
-            int direction = 360;
+            int direction = -360;
             int duration = 7;
 
             switch (this.experiment.getCurrentTrial().getVisual()) {
                 case (0): //direction
                     if (i == differentItem) {
-                        direction = -360;
+                        direction = 360;
                     }
                     break;
                 case (1): //speed
@@ -201,16 +201,16 @@ public class TrialExperimentController {
                     switch (both) {
                         case 0:
                             duration = 2;
-                            direction = 360;
+                            direction = -360;
                             break;
                         case 1:
                             duration = 7;
-                            direction = -360;
+                            direction = 360;
                             break;
 
                     }
                     if (i == differentItem) {
-                        direction = -360;
+                        direction = 360;
                         duration = 2;
                     }
                     break;
