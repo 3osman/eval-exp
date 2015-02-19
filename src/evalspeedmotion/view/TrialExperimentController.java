@@ -170,19 +170,23 @@ public class TrialExperimentController {
             wheels.get(i).setPrefHeight(130);
             wheels.get(i).setPrefWidth(130);
             Circle current = new Circle(10, Color.BLACK);
-            current.setTranslateY(20.0);
+            current.setTranslateY(30.0);
+            Circle bigCircle = new Circle(30, Color.TRANSPARENT);
+            bigCircle.setStroke(Color.GREY);
+            bigCircle.setStrokeWidth(1);
             current.setStrokeType(StrokeType.INSIDE);
+            wheels.get(i).getChildren().add(bigCircle);
             wheels.get(i).getChildren().add(current);
+
             grid.getChildren().add(wheels.get(i));
             Timeline rot = new Timeline();
             rot.setCycleCount(Timeline.INDEFINITE);
             rot.setRate(1);
             int direction = 360;
-            int duration = generator.nextInt(4) + 4;
+            int duration = 7;
 
             switch (this.experiment.getCurrentTrial().getVisual()) {
                 case (0): //direction
-                    duration = 7;
                     if (i == differentItem) {
                         direction = -360;
                     }
@@ -193,7 +197,18 @@ public class TrialExperimentController {
                     }
                     break;
                 case (2): //both of them
-                    duration = generator.nextInt(4) + 2;
+                    int both = generator.nextInt(2);
+                    switch (both) {
+                        case 0:
+                            duration = 2;
+                            direction = 360;
+                            break;
+                        case 1:
+                            duration = 7;
+                            direction = -360;
+                            break;
+
+                    }
                     if (i == differentItem) {
                         direction = -360;
                         duration = 2;
@@ -233,7 +248,8 @@ public class TrialExperimentController {
     public void setTrialInstructions(String ins) {
         instructions.setText(ins);
     }
-    public void setHit(boolean hit){
+
+    public void setHit(boolean hit) {
         this.experiment.getCurrentTrial().setHit(hit);
     }
 
@@ -244,7 +260,6 @@ public class TrialExperimentController {
         //==================================
         //Time
         this.experiment.getCurrentTrial().setDuration(Double.parseDouble(timerLabel.getText()));
-        System.out.println(timerLabel.getText());
         //==================================
 
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
@@ -254,7 +269,7 @@ public class TrialExperimentController {
             ImageView currentImage = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/xshape.gif"), 50, 50, true, true));
             wheels.get(i).getChildren().add(currentImage);
             final int id = i;
-           
+
             currentImage.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
                 @Override
@@ -263,9 +278,8 @@ public class TrialExperimentController {
                     //===============================
                     // hit or not
                     setHit((id == differentItem) ? true : false);
-                   
-                    //===============================
 
+                    //===============================
                     mainApp.finishTrial();
                 }
             });
