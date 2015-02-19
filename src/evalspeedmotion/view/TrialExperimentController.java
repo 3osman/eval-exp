@@ -192,24 +192,27 @@ public class TrialExperimentController {
             rot.setRate(1);
             int direction = 360;
             int duration = 7;
-            if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 0) {
-                direction = -360;
-            } else if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 1) {
-                duration = 3;
-            } else if (i == differentItem && this.experiment.getCurrentTrial().getVisual() == 2) {
-                direction = -360;
-                duration = 3;
+            if (i == differentItem) {
+                switch (this.experiment.getCurrentTrial().getVisual()) {
+                    case (0):
+                        direction = -360;
+                        break;
+                    case (1):
+                        duration = 3;
+                        break;
+                    case (2):
+                        direction = -360;
+                        duration = 3;
+                        break;
+                }
             }
-
             rot.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(
                                     wheels.get(i).rotateProperty(), 0)),
                     new KeyFrame(Duration.seconds(duration), new KeyValue(wheels.get(i)
                                     .rotateProperty(), direction)));
             rot.playFromStart();
-
         }
-
     }
 
     public void setExperiment(Experiment ex) {
