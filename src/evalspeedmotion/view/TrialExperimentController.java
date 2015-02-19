@@ -146,17 +146,17 @@ public class TrialExperimentController {
                 break;
             case 9:
                 AnchorPane.setLeftAnchor(grid, 200.0);
-                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setBottomAnchor(grid, 10.0);
                 AnchorPane.setRightAnchor(grid, 200.0);
                 break;
             case 16:
                 AnchorPane.setLeftAnchor(grid, 140.0);
-                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setBottomAnchor(grid, 10.0);
                 AnchorPane.setRightAnchor(grid, 140.0);
                 break;
             case 25:
                 AnchorPane.setLeftAnchor(grid, 80.0);
-                AnchorPane.setBottomAnchor(grid, 60.0);
+                AnchorPane.setBottomAnchor(grid, 10.0);
                 AnchorPane.setRightAnchor(grid, 80.0);
                 break;
         }
@@ -185,6 +185,7 @@ public class TrialExperimentController {
 
             switch (this.experiment.getCurrentTrial().getVisual()) {
                 case (0): //direction
+                    duration = 2;
                     if (i == differentItem) {
                         direction = 360;
                     }
