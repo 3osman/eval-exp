@@ -6,6 +6,7 @@
 package evalspeedmotion.view;
 
 import evalspeedmotion.EvalSpeedMotion;
+import evalspeedmotion.Trial;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -17,12 +18,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class TimerExperimentController {
      
     private EvalSpeedMotion mainApp;
 
+    @FXML
+    private Text instructions;
+    
     private Timeline timeline;
     
     @FXML
@@ -53,6 +58,10 @@ public class TimerExperimentController {
                 });
         }
     }    
+    
+    public void setTrialInstructions(String ins) {
+        instructions.setText(ins);
+    }
     
     public void setMain(EvalSpeedMotion main) {
         this.mainApp = main;

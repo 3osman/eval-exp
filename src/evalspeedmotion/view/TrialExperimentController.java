@@ -42,8 +42,6 @@ public class TrialExperimentController {
     @FXML
     private Text instructions;
     @FXML
-    private Text space;
-    @FXML
     private StackPane wheel, wheel1, wheel2, wheel3, wheel4, wheel5, wheel6, wheel7, wheel8, wheel9, wheel10, wheel11, wheel12, wheel13, wheel14, wheel15, wheel16, wheel17, wheel18, wheel19, wheel20, wheel21, wheel22, wheel23, wheel24;
     ArrayList<StackPane> wheels = new ArrayList<>();
     int differentItem;
@@ -254,8 +252,7 @@ public class TrialExperimentController {
     }
 
     public void putPlaceholders() {
-        setTrialInstructions("Choose the different one");
-        space.setText("");
+        setTrialInstructions("Select the different one.");
         grid.getChildren().clear();
         //==================================
         //Time

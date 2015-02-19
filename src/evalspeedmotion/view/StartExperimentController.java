@@ -22,6 +22,8 @@ public class StartExperimentController {
     private Text block;
     @FXML
     private Text totalBlocks;
+    @FXML
+    private Text instructions;
     
     public void initialize() {
         
@@ -38,6 +40,9 @@ public class StartExperimentController {
         }
         if(block != null) {
             block.setText(String.valueOf(experiment.getBlock()));
+        }
+        if(instructions != null) {
+            instructions.setText(experiment.getCurrentTrial().getInstructions());
         }
     }
     

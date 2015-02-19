@@ -28,9 +28,20 @@
             </HBox>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="until next trial starts automatically">
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="50.0" />
                </VBox.margin>
             </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Instructions: during the trail">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="press SPACE when you find">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Text>
+            <Text fx:id="instructions" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-style: italic;" styleClass="h3" />
          </children>
       </VBox>
    </children>
