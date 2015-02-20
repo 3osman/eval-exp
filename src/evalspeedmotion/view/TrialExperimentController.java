@@ -71,7 +71,7 @@ public class TrialExperimentController {
                                 @Override
                                 public void handle(ActionEvent t) {
                                     Duration duration = ((KeyFrame) t.getSource()).getTime();
-                                    System.out.println(duration.toMillis());
+                                    //System.out.println(duration.toMillis());
                                     time = time.add(duration);
                                     timeSeconds.set(time.toSeconds());
                                 }
