@@ -68,7 +68,7 @@ public class EvalSpeedMotion extends Application {
      * Creates the experiment for this participant
      * @param participant 
      */
-    public void showExperiment(String participant) {
+    public void showExperiment(String participant, int block, int trial) {
         try {
             // Load the fxml file 
             FXMLLoader loader = new FXMLLoader();
@@ -78,7 +78,7 @@ public class EvalSpeedMotion extends Application {
             Scene scene = new Scene(experimentLayout);
             primaryStage.setScene(scene);
 
-            experiment = new Experiment(participant, 1, 0);
+            experiment = new Experiment(participant, block, trial);
             ExperimentController controller = loader.getController();
             controller.setExperiment(experiment);
             controller.setMain(this);

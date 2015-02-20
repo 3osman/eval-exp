@@ -25,7 +25,14 @@ public class RootLayoutController {
     
     @FXML
     private ComboBox participant;
+    @FXML
+    private ComboBox block;
+    @FXML
+    private ComboBox trial;
+    
     private String participantSelected;
+    private int blockSelected = -1;
+    private int trialSelected = -1;
     
     @FXML 
     private Button button;
@@ -33,22 +40,54 @@ public class RootLayoutController {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("Starting Experiment!");
-        main.showExperiment(participantSelected);
+        main.showExperiment(participantSelected, blockSelected, trialSelected);
     }
     
     @FXML
-    private void handleComboBoxAction(ActionEvent event) {  
+    private void handleParticipantComboBoxAction(ActionEvent event) {  
         participantSelected = participant.getValue().toString();
 
-        button.setDisable(false);
+        if(!participantSelected.equals("") && blockSelected > 0 && trialSelected >= 0) {
+                    button.setDisable(false);
+        }
+    }
+    
+     @FXML
+    private void handleBlockComboBoxAction(ActionEvent event) {  
+        blockSelected = Integer.parseInt(block.getValue().toString());
+
+        if(!participantSelected.equals("") && blockSelected > 0 && trialSelected >= 0) {
+            button.setDisable(false);
+        } 
+    }
+    
+     @FXML
+    private void handleTrialComboBoxAction(ActionEvent event) {  
+        trialSelected = Integer.parseInt(trial.getValue().toString());
+
+        if(!participantSelected.equals("") && blockSelected > 0 && trialSelected >= 0) {
+                    button.setDisable(false);
+        }
     }
     
     @FXML
     public void initialize() {
         // TODO
-        ObservableList<Integer> list = FXCollections.observableArrayList();
-        list.addAll(0,1,2,3,4,5);  
-        participant.setItems(list);
+        ObservableList<Integer> listParticipants = FXCollections.observableArrayList();
+        listParticipants.addAll(0,1,2,3,4,5);  
+        participant.setItems(listParticipants);
+        
+        ObservableList<Integer> listBlocks = FXCollections.observableArrayList();
+        listBlocks.addAll(1,2,3,4);  
+        block.setItems(listBlocks);
+        
+        ObservableList<Integer> listTrials = FXCollections.observableArrayList();
+        for(int i = 0; i <= 11; i++) {
+            listTrials.add(i);  
+        }
+        
+        trial.setItems(listTrials);
+
     }    
     
     public void setMain(EvalSpeedMotion main) {
