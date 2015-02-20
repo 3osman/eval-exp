@@ -33,7 +33,7 @@ public class TimerExperimentController {
     @FXML
     private Label timerLabel;
     private IntegerProperty timeSeconds = new SimpleIntegerProperty();
-    private Duration time = Duration.seconds(5);
+    private Duration time = Duration.seconds(3);
     /**
      * Initializes the controller class.
      */

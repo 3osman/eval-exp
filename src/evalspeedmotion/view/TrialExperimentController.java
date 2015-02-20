@@ -66,11 +66,12 @@ public class TrialExperimentController {
             timerLabel.textProperty().bind(timeSeconds.asString());
 
             timeline = new Timeline(
-                    new KeyFrame(Duration.millis(100),
+                    new KeyFrame(Duration.millis(1),
                             new EventHandler<ActionEvent>() {
                                 @Override
                                 public void handle(ActionEvent t) {
                                     Duration duration = ((KeyFrame) t.getSource()).getTime();
+                                    System.out.println(duration.toMillis());
                                     time = time.add(duration);
                                     timeSeconds.set(time.toSeconds());
                                 }
@@ -257,7 +258,7 @@ public class TrialExperimentController {
         grid.getChildren().clear();
         //==================================
         //Time
-        this.experiment.getCurrentTrial().setDuration(Double.parseDouble(timerLabel.getText()));
+        this.experiment.getCurrentTrial().setDuration(time.toMillis());
         //==================================
 
         for (int i = 0; i < this.experiment.getCurrentTrial().getSize(); i++) {
