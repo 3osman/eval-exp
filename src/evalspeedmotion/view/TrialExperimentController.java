@@ -237,10 +237,10 @@ public class TrialExperimentController {
             participant.setText(experiment.getParticipant());
         }
         if (totalTrials != null) {
-            totalTrials.setText(String.valueOf(Experiment.TRIALS + 1));
+            totalTrials.setText(String.valueOf(Experiment.TRIALS));
         }
         if (trial != null) {
-            trial.setText(String.valueOf(experiment.getTrial() + 1));
+            trial.setText(String.valueOf(experiment.getTrial()));
         }
     }
 
