@@ -87,7 +87,8 @@ public class Experiment {
         }
     }
      
-    public void log(Trial trial) {
+    public void log() {
+        Trial trial = allTrials.get(currentTrial);
         String trialToPrint = this.block + "\t"
                 + trial.trial + "\t"
                 + trial.visual + "\t"
@@ -99,17 +100,21 @@ public class Experiment {
     }
     
     public void trialCompleted() {
-        Trial trial = allTrials.get(currentTrial);
-        log(trial);
+        log();
         currentTrial++;
     }
     
     public void blockCompleted() {
+        log();
         currentTrial = 0;
         block++;
         if(block <= BLOCKS) {
             loadTrials();
         }
+    }
+    
+    public void experimentCompleted() {
+        log();
     }
     
     public void initLog() {

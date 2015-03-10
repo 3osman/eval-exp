@@ -1,6 +1,7 @@
 package evalspeedmotion.view;
 
 import evalspeedmotion.EvalSpeedMotion;
+import evalspeedmotion.Experiment;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
@@ -82,7 +83,7 @@ public class RootLayoutController {
         block.setItems(listBlocks);
         
         ObservableList<Integer> listTrials = FXCollections.observableArrayList();
-        for(int i = 0; i <= 11; i++) {
+        for(int i = 0; i <= Experiment.TRIALS; i++) {
             listTrials.add(i);  
         }
         

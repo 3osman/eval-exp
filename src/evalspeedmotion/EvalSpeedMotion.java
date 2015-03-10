@@ -126,6 +126,8 @@ public class EvalSpeedMotion extends Application {
             controller.setGrid();
             experimentLayout.setCenter(trial);
             
+            System.out.println(experiment.getTrial());
+            
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -149,6 +151,7 @@ public class EvalSpeedMotion extends Application {
             experiment.blockCompleted();
             startBlock();
         } else {
+            experiment.experimentCompleted();
             finishExperiment();
         }        
     }
